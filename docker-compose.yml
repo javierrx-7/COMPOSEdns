@@ -1,7 +1,7 @@
 services:
   asir_bind9:
     container_name: asir_bind9
-    image: internetsystemsconsortium/bind9:9.16
+    image: ubuntu/bind9
     ports:
       - 53:53/tcp
       - 53:53/udp
@@ -11,15 +11,7 @@ services:
     volumes:
       - ./conf:/etc/bind
       - ./zonas:/var/lib/bind
-  asir_cliente:
-    container_name: asir_cliente
-    image: alpine
-    networks:
-      - mired
-    stdin_open: true  
-    tty: true         
-    dns:
-      - 172.28.5.254  
+  
 networks:
   mired: 
     external: true
